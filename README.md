@@ -1,5 +1,7 @@
 # Counselor Student Action Center
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel)](https://zyraassessment.vercel.app/)
+
 A full-stack mini feature built for the Zyra platform assessment. This tool gives counselors a single-page dashboard to review a student's profile, manage tasks, read messages, and assess urgency at a glance.
 
 ---
