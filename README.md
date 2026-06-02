@@ -386,7 +386,7 @@ npm test
 <img width="1912" height="908" alt="Image" src="https://github.com/user-attachments/assets/232c8a0a-831e-4f10-88cc-22f05713ea53" />
 
 
-# Message Box
+# Students Directory
 
 
 <img width="1918" height="901" alt="Image" src="https://github.com/user-attachments/assets/e6496d03-d640-4669-9d5a-59ef00a98b15" />
@@ -416,13 +416,13 @@ npm test
 <img width="1906" height="911" alt="Image" src="https://github.com/user-attachments/assets/5ba46e16-19c0-42a7-8375-656eb287cfbb" />
 
 
-
+---
 
 
 <img width="1918" height="911" alt="Image" src="https://github.com/user-attachments/assets/bb415025-dfb3-4793-9882-a1df0cb91d35" />
 
 
-
+---
 
 
 <img width="1912" height="884" alt="Image" src="https://github.com/user-attachments/assets/173f40de-9331-4b57-bd12-c2dac258f31f" />
