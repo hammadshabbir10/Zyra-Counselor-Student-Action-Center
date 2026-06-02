@@ -257,3 +257,108 @@ Components are structured by responsibility:
 - `TaskCard` -- handles individual status updates via mutation
 - `MessageList` -- displays messages with unread-first sorting
 - `LoadingState` / `ErrorState` -- dedicated UI states for async boundaries
+
+---
+
+## Task 2: Production Quality Improvements
+
+This section documents the bonus assessment additions — request logging, error middleware with request IDs, integration tests, frontend tests, and performance tradeoffs.
+
+---
+
+### Request Logging
+
+Every HTTP request is logged with structured output using a custom `requestLogger` middleware (`server/src/middleware/requestLogger.ts`).
+
+**What's logged per request:**
+
+| Field       | Description                              |
+| ----------- | ---------------------------------------- |
+| `timestamp` | ISO 8601 timestamp when response finishes |
+| `method`    | HTTP method (GET, PATCH, etc.)           |
+| `url`       | Full request URL path                    |
+| `statusCode`| HTTP response status code                |
+| `durationMs`| Response time in milliseconds            |
+| `requestId` | UUID assigned by the request ID middleware|
+
+**Dev output** is color-coded (green for 2xx, yellow for 4xx, red for 5xx) for quick visual scanning. In production (`NODE_ENV=production`), structured JSON lines are emitted to stdout for ingestion by log aggregators (e.g., Datadog, ELK, CloudWatch).
+
+Example dev log:
+```
+[GET] /students/stu_001/action-center → 200 (53ms) [rid:547d9481-7a64-458f-a428-c892ecf2be14]
+[PATCH] /tasks/tsk_001/status → 400 (12ms) [rid:2a268a4a-5181-49b9-b3a8-ad3ddb6ebb85]
+```
+
+---
+
+### Error Middleware with Request IDs
+
+A `requestIdMiddleware` (`server/src/middleware/requestId.ts`) runs **first** in the middleware chain. It:
+
+1. Generates a UUID (`crypto.randomUUID()`) for every incoming request.
+2. Attaches it to `req.requestId` and sets the `X-Request-Id` response header.
+3. If the client sends an `X-Request-Id` header, it is reused — enabling distributed tracing across services.
+
+The global error handler includes the `requestId` in error responses:
+
+```json
+{
+  "error": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred.",
+  "requestId": "547d9481-7a64-458f-a428-c892ecf2be14",
+  "statusCode": 500
+}
+```
+
+This allows support teams to correlate user-reported errors with specific log entries.
+
+---
+
+### Testing
+
+#### Backend Integration Tests (Jest + Supertest)
+
+Located in `server/src/__tests__/actionCenter.test.ts`. 13 tests covering:
+
+- **Action Center API**: Validates response shape (student, tasks, messages, summary), ensures tasks/messages belong to the correct student, checks urgency level computation, verifies `totalTasks = completedTasks + pendingTasks`.
+- **Task Status PATCH**: Tests valid updates (todo → in_progress → completed), invalid status validation (400), missing status field (400), non-existent task (404).
+- **Request ID Tracing**: Verifies `X-Request-Id` header is present on every response, and that client-provided IDs are echoed back.
+- **Health Check**: Verifies `/health` returns ok status.
+
+Run backend tests:
+```bash
+cd server
+npm test
+```
+
+#### Frontend Component Tests (Vitest + React Testing Library)
+
+Located in `client/src/__tests__/Dashboard.test.tsx`. 8 tests covering:
+
+- **Loading State**: Verifies skeleton loading UI appears while data fetches.
+- **Error State**: Verifies error message and "Try Again" retry button appear on API failure.
+- **Success State**: Verifies student name (Maya Patel), urgency badge (critical), task titles, message subjects, and summary metrics render after successful data load.
+- **Navigation**: Verifies brand text and sidebar items render.
+
+Run frontend tests:
+```bash
+cd client
+npm test
+```
+
+---
+
+### Performance Decisions & Tradeoffs
+
+| Decision | Rationale | Tradeoff |
+| -------- | --------- | -------- |
+| **In-memory mock data** | No database setup needed, zero deployment friction, instant reads | Data resets on server restart; not suitable for production persistence |
+| **Client-side filtering & sorting** | Dataset is small (~5-15 items per student). Avoids network round-trips for filter/sort changes | Would not scale to thousands of tasks — would need server-side pagination |
+| **React Query with `staleTime`** | Prevents redundant refetches when switching tabs. Action center data stays fresh for 30s, student list for 5min | Stale data is shown briefly after mutations until `invalidateQueries` triggers a refetch |
+| **Zustand for client state** | Only one piece of client state (selected student ID). Zustand has zero boilerplate vs Redux | Would need more structure (slices, middleware) if client state grew significantly |
+| **Server-side urgency computation** | All API consumers get consistent urgency levels. Single source of truth | Adds server compute per request; could be cached if urgency inputs rarely change |
+| **Vite dev proxy** | Eliminates CORS configuration during development | Requires separate CORS setup for production deployment |
+| **Artificial API delay (2s)** | Demonstrates loading skeletons and transition animations realistically | Removed in test mode (`NODE_ENV=test`) for fast test execution |
+| **UUID request IDs (crypto.randomUUID)** | Built-in Node.js, no external dependency. RFC 4122 compliant | Slightly longer than short IDs; acceptable for log correlation |
+| **Console-based logging** | Simple, zero-dependency. Structured JSON in production mode | No log levels (info/warn/error) or log rotation — would use Winston/Pino in production |
+

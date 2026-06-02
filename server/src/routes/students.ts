@@ -18,7 +18,9 @@ router.get("/:id/action-center", (req: Request, res: Response): void => {
 
   // 2-second delay for real students to show a smooth loading transition.
   // stu_999 (David Kim) returns immediately to show fast error feedback.
-  const delayMs = id === "stu_999" ? 0 : 2000;
+  // In test mode, skip all delays for fast test execution.
+  const isTest = process.env.NODE_ENV === "test";
+  const delayMs = isTest ? 0 : id === "stu_999" ? 0 : 2000;
 
   setTimeout(() => {
     const student = students.find((s) => s.id === id);
