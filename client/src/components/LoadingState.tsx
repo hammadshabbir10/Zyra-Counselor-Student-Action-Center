@@ -1,5 +1,8 @@
 // ---------------------------------------------------------------------------
-// LoadingState — skeleton loading placeholder
+// LoadingState — My skeleton loader.
+// I prefer skeleton loading over spinner icons because it prevents the UI
+// from jumping around when data arrives. It gives the user a sense of what's
+// coming before the API request finishes.
 // ---------------------------------------------------------------------------
 export function LoadingState() {
   return (

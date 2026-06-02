@@ -3,7 +3,10 @@ import { useStudents } from "../hooks/useActionCenter";
 import { useAppStore } from "../store/appStore";
 
 // ---------------------------------------------------------------------------
-// StudentSelector — dropdown to switch between students
+// StudentSelector — My dropdown component for switching between students.
+// I use this if I need an explicit selector outside the TopNav. It pulls
+// the roster directly from the API and updates the global Zustand store
+// so the entire dashboard reacts instantly when a new student is picked.
 // ---------------------------------------------------------------------------
 export function StudentSelector() {
   const { data: students, isLoading } = useStudents();

@@ -4,6 +4,14 @@ import { fetchStudents } from "../api/actionCenter";
 import { LoadingState } from "./LoadingState";
 import { ErrorState } from "./ErrorState";
 
+// ---------------------------------------------------------------------------
+// StudentsDirectory — My master roster view for the counselor.
+// I built this table so counselors can see all their students in one place.
+// I added multi-factor filtering (search, grade, risk, status) and a
+// "search execution" system so filters only apply when explicitly triggered,
+// preventing jank while typing. It includes visual risk badges and GPA
+// coloring to highlight who needs attention fastest.
+// ---------------------------------------------------------------------------
 export function StudentsDirectory() {
   const { data: students, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["students"],

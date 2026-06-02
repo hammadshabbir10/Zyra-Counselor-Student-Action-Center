@@ -5,6 +5,12 @@ import { LoadingState } from "./LoadingState";
 import { ErrorState } from "./ErrorState";
 import { useAppStore } from "../store/appStore";
 
+// ---------------------------------------------------------------------------
+// MessagesView — My dedicated inbox interface.
+// I built this split-pane view (sidebar list + main thread) because counselors
+// need to quickly triage messages without losing context. I added smart
+// filtering so they can toggle between all messages or just the unread ones.
+// ---------------------------------------------------------------------------
 export function MessagesView() {
   const selectedStudentId = useAppStore((s) => s.selectedStudentId);
   const { data: allMessages, isLoading, isError, error, refetch } = useQuery({

@@ -305,7 +305,6 @@ The global error handler includes the `requestId` in error responses:
 {
   "error": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred.",
-  "requestId": "547d9481-7a64-458f-a428-c892ecf2be14",
   "statusCode": 500
 }
 ```

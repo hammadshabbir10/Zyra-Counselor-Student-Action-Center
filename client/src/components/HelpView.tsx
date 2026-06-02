@@ -1,3 +1,9 @@
+// ---------------------------------------------------------------------------
+// HelpView — My documentation and guide center for the portal.
+// I included this because enterprise software can be intimidating. This gives
+// counselors a quick reference guide on what each feature does, plus a nice
+// way to test the error boundary states.
+// ---------------------------------------------------------------------------
 export function HelpView() {
   return (
     <div className="tab-container help-view" style={{ animation: "fadeIn 0.4s ease" }}>

@@ -3,7 +3,11 @@ import type { Task, TaskStatus } from "../types";
 import { useUpdateTaskStatus } from "../hooks/useActionCenter";
 
 // ---------------------------------------------------------------------------
-// TaskCard — individual task with status update capability
+// TaskCard — My individual task component.
+// I built this with an inline status dropdown so counselors don't have to
+// open a separate modal just to mark something complete. It hooks directly
+// into my React Query mutation to instantly save the status. I also added
+// a check to automatically highlight overdue tasks in red.
 // ---------------------------------------------------------------------------
 interface TaskCardProps {
   task: Task;

@@ -7,7 +7,11 @@ import {
 import type { TaskStatus } from "../types";
 
 // ---------------------------------------------------------------------------
-// React Query Hooks — server state management
+// React Query Hooks — My data fetching layer.
+// I rely on TanStack Query to handle caching, background refetching, and
+// loading states. By wrapping my API calls in these hooks, I keep my UI
+// components completely clean of fetch logic. I also use mutation invalidation
+// here to ensure the UI instantly reflects task status updates.
 // ---------------------------------------------------------------------------
 
 /** Fetches the list of all students. Stale time set to 5 minutes. */

@@ -4,6 +4,13 @@ import { LoadingState } from "./LoadingState";
 import { ErrorState } from "./ErrorState";
 import { useAppStore } from "../store/appStore";
 
+// ---------------------------------------------------------------------------
+// TaskManagement — My global task board for the counselor.
+// Instead of just viewing tasks per student, I built this Kanban-style board
+// so counselors can see every task across their entire caseload.
+// It organizes everything by status, flags overdue items in red, and shows
+// a quick summary of what needs immediate attention.
+// ---------------------------------------------------------------------------
 export function TaskManagement() {
   const selectedStudentId = useAppStore((s) => s.selectedStudentId);
   const { data: allTasks, isLoading, isError, error, refetch } = useQuery({

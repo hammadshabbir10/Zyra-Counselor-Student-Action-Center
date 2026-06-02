@@ -2,7 +2,10 @@ import type { Message } from "../types";
 import { useAppStore } from "../store/appStore";
 
 // ---------------------------------------------------------------------------
-// MessageList — displays recent messages with unread highlighting
+// MessageList — My mini-inbox component for the dashboard.
+// Instead of showing all messages, I limit this to the top 3 most recent,
+// prioritizing unread messages first. It gives the counselor just enough
+// context without cluttering the screen.
 // ---------------------------------------------------------------------------
 interface MessageListProps {
   messages: Message[];

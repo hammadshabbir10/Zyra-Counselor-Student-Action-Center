@@ -8,7 +8,9 @@ import type {
 const API_BASE = "/api";
 
 // ---------------------------------------------------------------------------
-// GET /students — list all students
+// Action Center API Client — My fetch wrappers for backend communication.
+// I kept these as raw fetch calls rather than pulling in Axios to keep the
+// bundle size down. These perfectly map to the Express endpoints I built.
 // ---------------------------------------------------------------------------
 export async function fetchStudents(): Promise<Student[]> {
   const res = await fetch(`${API_BASE}/students`);

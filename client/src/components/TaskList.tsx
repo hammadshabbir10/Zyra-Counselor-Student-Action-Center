@@ -3,7 +3,10 @@ import type { Task } from "../types";
 import { TaskCard } from "./TaskCard";
 
 // ---------------------------------------------------------------------------
-// TaskList — filterable list of student tasks
+// TaskList — My list view for organizing a student's tasks.
+// I added a simple tabbed filter so counselors can quickly sort by status,
+// and I wrote a custom sort function that ensures urgent tasks always float
+// to the top, followed by chronological due dates.
 // ---------------------------------------------------------------------------
 interface TaskListProps {
   tasks: Task[];
