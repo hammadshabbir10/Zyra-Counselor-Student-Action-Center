@@ -368,25 +368,25 @@ npm test
 ## Task 1
 
 
-*Landing Page*
+# Landing Page
 
 
 <img width="1897" height="901" alt="Image" src="https://github.com/user-attachments/assets/cabf0b6d-2905-4800-a118-d003224ea9fc" />
 
 
-*Dashboard*
+# Dashboard
 
 
 <img width="1878" height="917" alt="Image" src="https://github.com/user-attachments/assets/9388e670-90e5-4e45-ae8b-70c6c1cd1180" />
 
 
-*Students Taks*
+# Students Taks
 
 
 <img width="1912" height="908" alt="Image" src="https://github.com/user-attachments/assets/232c8a0a-831e-4f10-88cc-22f05713ea53" />
 
 
-*Message Box*
+# Message Box
 
 
 <img width="1918" height="901" alt="Image" src="https://github.com/user-attachments/assets/e6496d03-d640-4669-9d5a-59ef00a98b15" />
@@ -417,7 +417,11 @@ npm test
 
 
 
+
+
 <img width="1918" height="911" alt="Image" src="https://github.com/user-attachments/assets/bb415025-dfb3-4793-9882-a1df0cb91d35" />
+
+
 
 
 
@@ -425,7 +429,10 @@ npm test
 
 
 
+
 # Terminal 
+
+
 
 
 <img width="834" height="449" alt="Image" src="https://github.com/user-attachments/assets/4eaff688-f0d6-450e-b727-6ab3c75f175a" />
