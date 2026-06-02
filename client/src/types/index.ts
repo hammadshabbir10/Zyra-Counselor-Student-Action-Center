@@ -1,6 +1,7 @@
 // ---------------------------------------------------------------------------
-// Shared Types — mirrors server/src/types/index.ts
-// Kept separate to avoid cross-project imports in a monorepo-free setup.
+// Shared Types — My frontend interfaces.
+// I kept these separate from the backend to avoid complex monorepo
+// setups, but they mirror my server/src/types exactly to guarantee type safety.
 // ---------------------------------------------------------------------------
 
 export interface Student {

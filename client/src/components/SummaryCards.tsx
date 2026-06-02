@@ -1,7 +1,10 @@
 import type { ActionCenterSummary } from "../types";
 
 // ---------------------------------------------------------------------------
-// SummaryCards — quick glanceable metrics for the counselor
+// SummaryCards — My four quick-glance metric boxes.
+// I placed these right under the profile header so the counselor immediately
+// sees the raw numbers: total tasks, pending, overdue, and unread messages.
+// It's all about minimizing the cognitive load.
 // ---------------------------------------------------------------------------
 interface SummaryCardsProps {
   summary: ActionCenterSummary;

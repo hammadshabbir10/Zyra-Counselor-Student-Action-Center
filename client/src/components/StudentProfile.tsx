@@ -1,7 +1,10 @@
 import type { Student, ActionCenterSummary } from "../types";
 
 // ---------------------------------------------------------------------------
-// StudentProfile — header card with student info and urgency badge
+// StudentProfile — My header card component for the action center dashboard.
+// I built this to instantly show the counselor the student's vital stats
+// (grade, GPA, enrollment status) and a color-coded urgency badge, so they
+// know exactly what kind of situation they're dealing with at a glance.
 // ---------------------------------------------------------------------------
 interface StudentProfileProps {
   student: Student;

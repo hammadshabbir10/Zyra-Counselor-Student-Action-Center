@@ -1,6 +1,15 @@
 import React from "react";
 import { useAppStore, TabType } from "../store/appStore";
 
+// ---------------------------------------------------------------------------
+// Sidebar — My left-hand navigation panel that lets the counselor switch
+// between the main views: Dashboard, Students, Tasks, and Messages.
+// I keep it fixed to the viewport so it's always visible while scrolling
+// the main content area. The active tab is highlighted with my brand indigo
+// color. At the bottom I added a "Help & Guide" link that opens a reference
+// view explaining how the whole portal works.
+// ---------------------------------------------------------------------------
+
 export function Sidebar() {
   const activeTab = useAppStore((s) => s.activeTab);
   const setActiveTab = useAppStore((s) => s.setActiveTab);

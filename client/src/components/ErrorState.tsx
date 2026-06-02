@@ -1,5 +1,7 @@
 // ---------------------------------------------------------------------------
-// ErrorState — user-friendly error display with retry
+// ErrorState — My generic fallback component for failed queries.
+// I always include a retry button here because transient network failures
+// shouldn't force the counselor to hard-refresh their entire browser window.
 // ---------------------------------------------------------------------------
 interface ErrorStateProps {
   message: string;
