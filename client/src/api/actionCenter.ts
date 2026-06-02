@@ -5,7 +5,7 @@ import type {
   TaskStatus,
 } from "../types";
 
-const API_BASE = "/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "/api";
 
 // ---------------------------------------------------------------------------
 // Action Center API Client — My fetch wrappers for backend communication.
