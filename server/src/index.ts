@@ -13,15 +13,20 @@ const PORT = process.env.PORT || 4000;
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
 app.use(express.json());
 
-// ---------------------------------------------------------------------------
-// Routes
-// ---------------------------------------------------------------------------
+// Support both /api prefixed routes (for Vercel deployment) and root routes
 app.use("/students", studentRoutes);
 app.use("/tasks", taskRoutes);
 app.use("/messages", messageRoutes);
 
+app.use("/api/students", studentRoutes);
+app.use("/api/tasks", taskRoutes);
+app.use("/api/messages", messageRoutes);
+
 // Health check
 app.get("/health", (_req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
