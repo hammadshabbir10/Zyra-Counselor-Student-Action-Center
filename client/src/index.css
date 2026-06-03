@@ -2920,3 +2920,1001 @@ body {
   }
 }
 
+
+/* ==========================================================================
+   Mobile Bottom Nav — Always hidden on desktop, shown on mobile only
+   ========================================================================== */
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* ==========================================================================
+   Mobile Responsive — ≤ 420px (Phone-first layout)
+   ========================================================================== */
+@media (max-width: 420px) {
+
+  /* ── App Shell ── */
+  .app-layout {
+    padding-bottom: 64px; /* room for the bottom nav bar */
+  }
+
+  /* Hide desktop sidebar */
+  .app-sidebar {
+    display: none !important;
+  }
+
+  /* Remove left margin pushed by sidebar */
+  .app-main-content {
+    margin-left: 0 !important;
+    padding: 16px 14px 20px;
+    overflow-x: hidden;
+  }
+
+  /* app-body stacks vertically */
+  .app-body {
+    flex-direction: column;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ── Mobile Bottom Tab Nav ── */
+  .mobile-bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 62px;
+    background: #111827;
+    border-top: 1px solid #1f2937;
+    z-index: 100;
+    align-items: stretch;
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 8px 4px 6px;
+    transition: color 0.2s, background 0.2s;
+    border-top: 2px solid transparent;
+  }
+
+  .mobile-nav-item:hover {
+    color: #d1d5db;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mobile-nav-item.active {
+    color: #818cf8;
+    border-top-color: #4f46e5;
+    background: rgba(79, 70, 229, 0.08);
+  }
+
+  .mobile-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* ── TopNav (App Header) ── */
+  .top-nav {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .nav-left {
+    gap: 10px;
+  }
+
+  .nav-right {
+    gap: 10px;
+  }
+
+  .nav-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Hide "Zyra" brand text on tiny screens */
+  .nav-brand-text {
+    display: none;
+  }
+
+  .nav-brand {
+    gap: 6px;
+  }
+
+  /* Shrink student dropdown */
+  .student-nav-select {
+    min-width: unset;
+    width: calc(100vw - 160px);
+    font-size: 0.75rem;
+    padding: 6px 28px 6px 10px;
+  }
+
+  /* Shrink back button */
+  .nav-back-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Shrink avatar */
+  .profile-avatar-small {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  /* ── Dashboard Content ── */
+  .action-center-content {
+    gap: 14px;
+  }
+
+  /* ── Student Profile Card ── */
+  .profile-card {
+    padding: 16px 14px;
+    border-radius: var(--radius-lg);
+  }
+
+  .profile-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .profile-avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .avatar-initials {
+    font-size: 1rem;
+  }
+
+  .profile-name {
+    font-size: 1.0625rem;
+  }
+
+  .profile-email {
+    font-size: 0.75rem;
+  }
+
+  /* Urgency badge wraps below name on tiny screens */
+  .urgency-badge {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+  }
+
+  /* Profile details: 2 columns on mobile */
+  .profile-details {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-top: 14px;
+  }
+
+  .detail-item {
+    padding-left: 10px;
+  }
+
+  .detail-label {
+    font-size: 0.625rem;
+  }
+
+  .detail-value {
+    font-size: 0.875rem;
+  }
+
+  /* ── Summary Cards: 2 columns on mobile ── */
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .summary-card {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .summary-card-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .summary-card-value {
+    font-size: 1.25rem;
+  }
+
+  .summary-card-label {
+    font-size: 0.6875rem;
+  }
+
+  /* ── Content Grid (Tasks + Messages): single column ── */
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* ── Task List Section ── */
+  .task-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 14px 0;
+  }
+
+  .filter-tabs {
+    gap: 6px;
+    padding: 4px;
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .filter-tab {
+    padding: 5px 10px;
+    font-size: 0.6875rem;
+    flex-shrink: 0;
+  }
+
+  .task-list {
+    padding: 12px 14px 16px;
+    gap: 10px;
+  }
+
+  .task-card {
+    padding: 12px 14px;
+  }
+
+  .task-title {
+    font-size: 0.875rem;
+  }
+
+  .task-description {
+    font-size: 0.75rem;
+  }
+
+  .task-title-row {
+    gap: 8px;
+  }
+
+  /* ── Task Card Footer: stack vertically on very small ── */
+  .task-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .task-status-control {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .status-select {
+    font-size: 0.6875rem;
+    padding: 4px 24px 4px 8px;
+  }
+
+  /* ── Message Section ── */
+  .message-section {
+    border-radius: var(--radius-lg);
+  }
+
+  .message-header {
+    padding: 14px 14px 0;
+  }
+
+  .message-list {
+    padding: 10px 14px 16px;
+    gap: 6px;
+  }
+
+  .message-card {
+    padding: 10px 12px;
+  }
+
+  .message-from {
+    font-size: 0.75rem;
+  }
+
+  .message-subject {
+    font-size: 0.75rem;
+  }
+
+  .message-preview {
+    font-size: 0.6875rem;
+  }
+
+  /* ── Loading Skeletons ── */
+  .loading-skeleton-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ── Tab Container ── */
+  .tab-container {
+    max-width: 100%;
+  }
+
+  .tab-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .tab-title {
+    font-size: 1.125rem;
+  }
+
+  .tab-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  /* ── Filters Bar ── */
+  .filters-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .filters-bar-simple {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filter-group {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-dropdowns {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  /* Force search box full width inside filters-bar on mobile */
+  .filters-bar .search-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .filters-bar .search-box input {
+    width: 100%;
+    font-size: 0.875rem;
+    color: #111827;
+  }
+
+  /* Make apply filters button full width on mobile */
+  .filters-bar .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Students Directory Table → Card layout ── */
+  .students-table {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .students-table thead {
+    display: none; /* hide table headers */
+  }
+
+  .students-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .students-table tr {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border-bottom: none !important;
+  }
+
+  .students-table td {
+    padding: 4px 0;
+    border-bottom: none !important;
+    font-size: 0.875rem;
+  }
+
+  /* ── Kanban Board ── */
+  .kanban-board {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .kanban-card {
+    padding: 12px;
+  }
+
+  /* ── Messages View Layout ── */
+  .messages-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: unset;
+  }
+
+  .messages-sidebar {
+    width: 100%;
+    max-height: 260px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .messages-content {
+    min-height: 400px;
+  }
+
+  /* ── Header Stats ── */
+  .header-stats {
+    flex-wrap: wrap;
+  }
+
+  .stat-badge {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  /* ── Error & Empty States ── */
+  .error-container {
+    padding: 40px 16px;
+  }
+
+  /* ── Landing Page ── */
+  .landing-nav {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .landing-nav-links {
+    gap: 10px;
+  }
+
+  /* Hide nav text links on tiny screens, keep CTA */
+  .landing-nav-links .landing-link {
+    display: none;
+  }
+
+  .landing-hero {
+    padding: 32px 16px 40px;
+    gap: 28px;
+  }
+
+  .landing-hero-title {
+    font-size: 1.625rem;
+    margin-bottom: 14px;
+  }
+
+  .landing-hero-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .landing-hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .landing-cta-btn {
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .landing-features,
+  .landing-steps {
+    padding: 40px 16px 48px;
+  }
+
+  .landing-features-grid,
+  .landing-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .landing-feature-card,
+  .landing-step-card {
+    padding: 20px;
+  }
+
+  .landing-section-title {
+    font-size: 1.5rem;
+  }
+
+  .landing-footer {
+    padding: 20px 16px;
+  }
+
+  .landing-footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* ── Preview Card on landing ── */
+  .preview-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ── Section titles ── */
+  .section-title {
+    font-size: 0.9375rem;
+  }
+
+  .task-count {
+    font-size: 0.6875rem;
+    min-width: 20px;
+    height: 20px;
+  }
+
+  /* ================================================================
+     TASK MANAGEMENT — Fix negative margin bleed + filters layout
+     ================================================================ */
+  .task-management {
+    margin: 0 !important;  /* kill the desktop -12px bleed */
+    max-width: 100% !important;
+  }
+
+  /* Filters row: stack icon+select on first line, count on second */
+  .filters-bar-simple {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .filters-bar-simple .filter-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .filters-bar-simple .filter-group select {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 0.8125rem;
+    background: #f9fafb;
+    color: #111827;
+    font-weight: 500;
+  }
+
+  .filters-bar-simple .filter-group .filter-icon {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .filters-bar-simple .completed-count {
+    font-size: 0.8125rem;
+    color: #374151;
+    font-weight: 500;
+    padding-top: 6px;
+    border-top: 1px solid #f3f4f6;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* View toggle: make it compact and pill-shaped */
+  .tab-header .view-toggle {
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 3px;
+  }
+
+  .view-toggle-btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  /* Kanban: scroll horizontally so columns don't stack weirdly */
+  .kanban-board {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .kanban-column {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 14px 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .kanban-column-header {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kanban-column-header h3 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .kanban-column-content {
+    gap: 10px;
+  }
+
+  .kanban-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    border-left-width: 4px;
+  }
+
+  .kanban-card-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    color: #111827;
+  }
+
+  .kanban-card-student {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 10px;
+    gap: 4px;
+  }
+
+  .kanban-card-footer {
+    align-items: center;
+  }
+
+  .kanban-card-date {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  .kanban-student-avatar-small {
+    width: 26px;
+    height: 26px;
+    font-size: 0.625rem;
+  }
+
+  .kanban-priority-badge {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .kanban-empty-state {
+    text-align: center;
+    padding: 20px 0;
+    color: #9ca3af;
+    font-size: 0.8125rem;
+  }
+
+  /* ================================================================
+     MESSAGES VIEW — Fix cramped split-pane layout on mobile
+     ================================================================ */
+  .messages-view .tab-header {
+    margin-bottom: 16px !important;
+  }
+
+  /* Full stacked layout */
+  .messages-layout {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: unset !important;
+    border-radius: 10px;
+    overflow: visible;
+  }
+
+  /* Inbox list: compact fixed height with internal scroll */
+  .messages-sidebar {
+    width: 100% !important;
+    max-height: none !important;
+    height: auto;
+    border-right: none !important;
+    border-bottom: 1px solid #e5e7eb;
+    overflow: visible;
+  }
+
+  .messages-sidebar-header {
+    padding: 12px 14px 10px;
+    background: #f9fafb;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .messages-sidebar-header h3 {
+    font-size: 0.9375rem !important;
+    color: #111827;
+  }
+
+  .messages-list {
+    overflow-y: visible;
+    max-height: none;
+  }
+
+  .message-list-item {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .message-list-item:last-child {
+    border-bottom: none;
+  }
+
+  .message-list-item.active {
+    background: #f0f0ff;
+    border-left: 3px solid #4f46e5;
+  }
+
+  .message-sender {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .message-time {
+    font-size: 0.6875rem;
+  }
+
+  .message-subject-line {
+    font-size: 0.8rem;
+    color: #4b5563;
+    margin-bottom: 6px;
+  }
+
+  .tag-new {
+    font-size: 0.5625rem;
+    padding: 2px 5px;
+  }
+
+  /* Thread / message content area */
+  .messages-content {
+    min-height: 0 !important;
+    border-top: none;
+  }
+
+  .messages-content-header {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .message-sender-info {
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sender-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  .sender-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .sender-meta {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  /* "Maya's Profile" button — smaller on mobile */
+  .messages-content-header .message-actions {
+    width: 100%;
+  }
+
+  .messages-content-header .btn-outline {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .messages-thread {
+    padding: 14px;
+    background: #f9fafb;
+    min-height: 180px;
+  }
+
+  .chat-bubble {
+    max-width: 90%;
+    font-size: 0.875rem;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  .chat-incoming {
+    border-top-left-radius: 3px;
+  }
+
+  .chat-outgoing {
+    border-bottom-right-radius: 3px;
+    margin-left: auto;
+  }
+
+  .chat-time-incoming,
+  .chat-time-outgoing {
+    font-size: 0.6625rem;
+    margin-bottom: 10px;
+  }
+
+  .thread-date-divider {
+    margin: 10px 0;
+  }
+
+  .thread-date-divider span {
+    font-size: 0.6875rem;
+    padding: 0 8px;
+  }
+
+  /* ================================================================
+     STUDENTS DIRECTORY — Fix search text color + stat badges
+     ================================================================ */
+
+  /* Stat badges: wrap cleanly in 2 columns */
+  .students-directory .header-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .students-directory .stat-badge {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex: unset;
+  }
+
+  .students-directory .stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .students-directory .stat-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .students-directory .stat-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Fix invisible search text */
+  .filters-bar .search-box input,
+  .search-box input {
+    color: #111827 !important;
+    font-size: 0.875rem;
+    background: transparent;
+  }
+
+  .filters-bar .search-box input::placeholder {
+    color: #9ca3af;
+  }
+
+  /* Search box: full width, visible border */
+  .filters-bar .search-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    gap: 8px;
+  }
+
+  /* Student cards from table rows */
+  .students-table tr {
+    position: relative;
+    padding: 14px;
+  }
+
+  /* Show a mini label before each cell value using data labels */
+  .students-table td:nth-child(1) {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f3f4f6 !important;
+    margin-bottom: 4px;
+  }
+
+  .students-table td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .students-table td:nth-child(2)::before {
+    content: "Grade:";
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .students-table td:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .students-table td:nth-child(4) {
+    padding-top: 6px;
+  }
+
+  .student-cell {
+    gap: 10px;
+  }
+
+  .student-avatar-initials {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9375rem;
+    flex-shrink: 0;
+  }
+
+  .student-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+
+  .student-id {
+    font-size: 0.75rem;
+  }
+
+  /* GPA progress bar: full width on mobile */
+  .gpa-cell > div:last-child {
+    width: 100% !important;
+  }
+}
